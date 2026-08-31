@@ -30,6 +30,16 @@ export class CategoryService {
   }
 
   /**
+     * Creates a new category.
+     * @param {CategoryPayload} payload - Category data to create.
+     * @returns {Promise<CategoryResponse>} Created category.
+     */
+    async createCategory(payload: CategoryPayload): Promise<CategoryResponse> {
+      const res = await apiClient.post<CategoryResponse>('/categories', payload);
+      return res.data;
+    }
+
+  /**
    * Updates an existing category.
    * @param {string} categoryId - Category ID.
    * @param {string} name - Category name.

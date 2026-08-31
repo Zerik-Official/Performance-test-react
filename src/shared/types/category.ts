@@ -8,4 +8,9 @@ export interface Category {
   name: string;
   description?: string;
   createdAt?: string;
+  updateAt?: string;
 }
+
+export type CategoryPayload = Pick<Category, 'name' | 'description'>;
+
+export type CategoryResponse = Category

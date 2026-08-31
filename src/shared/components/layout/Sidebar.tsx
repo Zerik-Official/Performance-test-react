@@ -11,7 +11,7 @@ import { ROUTES } from '@shared/constants/routes';
 const navPublic = [
   { label: 'Home', href: ROUTES.HOME, icon: 'fa-solid fa-house' },
   { label: 'Categories', href: ROUTES.CATEGORIES, icon: 'fa-solid fa-layer-group' },
-  { label: 'Products', href: ROUTES.PRODUCTS, icon: 'fa-solid fa-box' },
+  { label: 'Events', href: ROUTES.EVENT, icon: 'fa-solid fa-calendar' },
 ];
 
 const navAuth = [

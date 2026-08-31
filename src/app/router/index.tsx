@@ -15,6 +15,7 @@ import { ViewCategories } from '@/features/categories/pages/ViewCategory';
 import { CreateCategories } from '@/features/categories/pages/CreateCategory';
 import { Events } from '@/features/events/pages/Events';
 import { ViewFavorites } from '@/features/favorites/pages/Favorites';
+import { CreateEvents } from '@/features/events/pages/CreateEvents';
 
 export const router = createBrowserRouter([
   {
@@ -35,18 +36,51 @@ export const router = createBrowserRouter([
   },
   {
     path: '/',
-    element: (
-      <ProtectedRoute>
-        <Layout />
-      </ProtectedRoute>
-    ),
+    element: <Layout />,
     children: [
       { index: true, element: <Home /> },
-      { path: 'profile', element: <Profile /> },
-      { path: 'favorites', element: <ViewFavorites /> },
       { path: 'categories', element: <ViewCategories /> },
       { path: 'events', element: <Events /> },
-      { path: 'admin/categories/new', element: <RoleGuard role="admin"><div className="p-8"><CreateCategories /></div></RoleGuard> },
+      {
+        path: 'profile',
+        element: (
+          <ProtectedRoute>
+            <Profile />
+          </ProtectedRoute>
+        ),
+      },
+      {
+        path: 'favorites',
+        element: (
+          <ProtectedRoute>
+            <ViewFavorites />
+          </ProtectedRoute>
+        ),
+      },
+      {
+        path: 'admin/categories/new',
+        element: (
+          <ProtectedRoute>
+            <RoleGuard role="admin">
+              <div className="p-8">
+                <CreateCategories />
+              </div>
+            </RoleGuard>
+          </ProtectedRoute>
+        ),
+      },
+      {
+        path: 'admin/events/new',
+        element: (
+          <ProtectedRoute>
+            <RoleGuard role="admin">
+              <div className="p-8">
+                <CreateEvents />
+              </div>
+            </RoleGuard>
+          </ProtectedRoute>
+        ),
+      },
     ],
   },
   { path: '*', element: <Navigate to="/" replace /> },

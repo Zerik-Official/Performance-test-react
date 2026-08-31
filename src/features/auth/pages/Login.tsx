@@ -10,6 +10,7 @@ import { Button } from '@shared/components/ui/button';
 import { Input } from '@shared/components/ui/input';
 import { Card, CardHeader, CardContent } from '@shared/components/ui/card';
 import { Spinner } from '@/components/ui/spinner';
+import { ROUTES } from '@shared/constants/routes';
 
 /**
  * Login form with controlled inputs.
@@ -42,7 +43,15 @@ export function Login(): React.ReactElement {
   }
 
   return (
-    <div className="flex min-h-screen items-center justify-center bg-black p-4">
+    <div className="flex min-h-screen items-center justify-center bg-black p-4 relative">
+      <Button
+        type="button"
+        onClick={() => navigate(ROUTES.HOME)}
+        className="absolute top-4 left-4 bg-white/10 text-white hover:bg-white/20 cursor-pointer text-xs flex items-center gap-2"
+      >
+        <i className="fa-solid fa-house" /> Go to Home
+      </Button>
+
       <Card className="w-full max-w-md bg-white text-black">
         <CardHeader className="flex flex-col items-center">
           <h1 className="flex items-center gap-2 text-2xl font-semibold"><i className="fa-solid fa-right-to-bracket" /> Login</h1>

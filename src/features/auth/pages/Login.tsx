@@ -9,6 +9,7 @@ import { toApiError } from '@shared/utils/errors';
 import { Button } from '@shared/components/ui/button';
 import { Input } from '@shared/components/ui/input';
 import { Card, CardHeader, CardContent } from '@shared/components/ui/card';
+import { Spinner } from '@/components/ui/spinner';
 
 /**
  * Login form with controlled inputs.
@@ -52,9 +53,18 @@ export function Login(): React.ReactElement {
             <Input placeholder="Email" type="email" value={email} onChange={(e) => setEmail(e.target.value)} required spellCheck="false" />
             <Input placeholder="Password" type="password" value={password} onChange={(e) => setPassword(e.target.value)} required spellCheck="false" />
             {error && <p className="text-sm text-destructive">{error}</p>}
-            <Button type="submit" disabled={loading} className={`w-full bg-black text-white hover:bg-black/9 hover:text-black ${loading ? '' : 'cursor-pointer'}`}>
-              <i className="fa-solid fa-arrow-right-to-bracket mr-2" />
-              {loading ? 'Loading...' : 'Login'}
+            <Button type="submit" disabled={loading} className={`w-full bg-black text-white hover:bg-black/9 hover:text-black ${loading ? 'cursor-not-allowed opacity-80' : 'cursor-pointer'}`}>
+              {loading ? (
+                <>
+                  <Spinner className="mr-2 size-4" />
+                  Loading...
+                </>
+              ) : (
+                <>
+                  <i className="fa-solid fa-arrow-right-to-bracket mr-2" />
+                  Login
+                </>
+              )}
             </Button>
             <p className="text-center text-sm text-muted-foreground">
               No account? <Link to="/register" className="text-black underline">Register</Link>

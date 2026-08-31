@@ -10,6 +10,7 @@ import { toApiError } from '@shared/utils/errors';
 import { Button } from '@shared/components/ui/button';
 import { Input } from '@shared/components/ui/input';
 import { Card, CardHeader, CardContent } from '@shared/components/ui/card';
+import { Spinner } from '@/components/ui/spinner';
 
 /**
  * Register form that auto-logins on success.
@@ -55,9 +56,18 @@ export function Register(): React.ReactElement {
             <Input placeholder="Email" type="email" value={email} onChange={(e) => setEmail(e.target.value)} required />
             <Input placeholder="Password" type="password" value={password} onChange={(e) => setPassword(e.target.value)} required />
             {error && <p className="text-sm text-destructive">{error}</p>}
-            <Button type="submit" disabled={loading} className={`w-full bg-black text-white hover:bg-black/90 ${loading ? '' : 'cursor-pointer'}`}>
-              <i className="fa-solid fa-user-check mr-2" />
-              {loading ? 'Loading...' : 'Register'}
+            <Button type="submit" disabled={loading} className={`w-full bg-black text-white hover:bg-black/9 hover:text-black ${loading ? 'cursor-not-allowed opacity-80' : 'cursor-pointer'}`}>
+              {loading ? (
+                <>
+                  <Spinner className="mr-2 size-4" />
+                  Loading...
+                </>
+              ) : (
+                <>
+                  <i className="fa-solid fa-user-check mr-2" />
+                  Register
+                </>
+              )}
             </Button>
             <p className="text-center text-sm text-muted-foreground">
               Already have account? <Link to="/login" className="text-black underline">Login</Link>

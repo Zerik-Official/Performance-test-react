@@ -8,7 +8,7 @@ export const ROUTES = {
   LOGIN: '/login',
   REGISTER: '/register',
   CATEGORIES: '/categories',
-  PRODUCTS: '/products',
+  EVENT: '/events',
   FAVORITES: '/favorites',
   PROFILE: '/profile',
   ADMIN_CATEGORY_NEW: '/admin/categories/new',

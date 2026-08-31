@@ -13,6 +13,8 @@ import { Register } from '@features/auth/pages/Register';
 import { Profile } from '@features/profile/pages/Profile';
 import { ViewCategories } from '@/features/categories/pages/ViewCategory';
 import { CreateCategories } from '@/features/categories/pages/CreateCategory';
+import { Events } from '@/features/events/pages/Events';
+import { ViewFavorites } from '@/features/favorites/pages/Favorites';
 
 export const router = createBrowserRouter([
   {
@@ -41,9 +43,9 @@ export const router = createBrowserRouter([
     children: [
       { index: true, element: <Home /> },
       { path: 'profile', element: <Profile /> },
-      { path: 'favorites', element: <div className="p-8">Favorites - In development</div> },
+      { path: 'favorites', element: <ViewFavorites /> },
       { path: 'categories', element: <ViewCategories /> },
-      { path: 'products', element: <div className="p-8">Products - In development</div> },
+      { path: 'events', element: <Events /> },
       { path: 'admin/categories/new', element: <RoleGuard role="admin"><div className="p-8"><CreateCategories /></div></RoleGuard> },
     ],
   },

@@ -3,7 +3,7 @@
  * @module app/providers/AppProviders
  */
 import { AuthProvider } from '@shared/context/AuthContext';
-import { BrowserRouter } from 'react-router-dom';
+import { ToastProvider } from '@/shared/context/ToastContext';
 
 interface Props {
   children: React.ReactNode;
@@ -15,5 +15,9 @@ interface Props {
  * @returns {React.ReactElement} Element.
  */
 export function AppProviders({ children }: Props): React.ReactElement {
-  return <AuthProvider>{children}</AuthProvider>;
+  return (
+    <ToastProvider>
+      <AuthProvider>{children}</AuthProvider>
+    </ToastProvider>
+  );
 }
